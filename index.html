@@ -78,7 +78,7 @@ kbd{font:11px ui-monospace,Menlo,monospace;background:var(--surface-2);border:1p
 </style></head><body>
 <header>
  <span class="conf">CONFIDENCIAL</span>
- <div><h1>Charleston × Solitons — mapa jurídico</h1><div class="sub">Índice visual do dossiê · 11/08/2026</div></div>
+ <div><h1>Charleston × Solitons — mapa jurídico</h1><div class="sub">Índice visual do dossiê · 12/08/2026 · v2 DRIVE DIRETO</div></div>
  <div class="tools">
   <input id="busca" placeholder="EV-076, Questão N, anexo…" autocomplete="off">
   <button class="tb" id="zi">+</button><button class="tb" id="zo">−</button>
@@ -128,7 +128,11 @@ D.nos.forEach(n=>{
   t.textContent=(n.tipo==="fragilidade"&&i===0?"⚠ ":"")+L;g.appendChild(t);});
  if(n.sub&&!hub){const t=el("text",{x:13,y:H-8,class:"s"});t.textContent=String(n.sub).slice(0,30);g.appendChild(t);}
  g.addEventListener("pointerdown",ev=>ev.stopPropagation());
- g.addEventListener("click",ev=>{ev.stopPropagation();sel(n.id);});
+ g.addEventListener("click",ev=>{
+   ev.stopPropagation();
+   sel(n.id);
+   if(n.document_url) window.open(n.document_url,"_blank","noopener");
+ });
  gn.appendChild(g);});
 // câmera
 let vx=0,vy=0,z=.62;
@@ -205,7 +209,7 @@ document.getElementById("busca").addEventListener("input",filtra);
 function ajuda(){document.getElementById("painel").innerHTML=`<div class="aviso">${esc(D.classificacao)}</div>
 <h3>Mapa de conexões</h3><div class="as">Índice visual do dossiê</div>
 <div class="fld"><b>O documento explica · o mapa conecta · o acervo comprova</b>
-<p>Arraste para mover, use a roda para dar zoom e <b>clique em qualquer nó</b> para acender apenas a rede dele — o resto esmaece.</p></div>
+<p>Arraste para mover, use a roda para dar zoom e <b>clique em qualquer nó</b> para abrir o documento correspondente no Drive em uma nova aba. O painel lateral também mostra os detalhes do nó.</p></div>
 <div class="fld"><b>Linhas</b><p>Contínua liga estrutura. Tracejada liga evidência ao que ela sustenta. Pontilhada liga a questão jurídica ao que ela afeta.</p></div>
 <div class="fld"><b>Busca</b><p>Digite <kbd>EV-076</kbd>, <kbd>Questão N</kbd> ou um termo como <kbd>anexo</kbd>.</p></div>
 <div class="fld"><b>Cor não é a informação</b><p>Cada nó traz o tipo escrito aqui no painel, e as fragilidades levam ⚠ no rótulo.</p></div>
