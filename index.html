@@ -127,6 +127,7 @@ D.nos.forEach(n=>{
  lines.forEach((L,i)=>{const t=el("text",{x:13,y:(lines.length>1?16:18)+i*14});
   t.textContent=(n.tipo==="fragilidade"&&i===0?"⚠ ":"")+L;g.appendChild(t);});
  if(n.sub&&!hub){const t=el("text",{x:13,y:H-8,class:"s"});t.textContent=String(n.sub).slice(0,30);g.appendChild(t);}
+ g.addEventListener("pointerdown",ev=>ev.stopPropagation());
  g.addEventListener("click",ev=>{ev.stopPropagation();sel(n.id);});
  gn.appendChild(g);});
 // câmera
